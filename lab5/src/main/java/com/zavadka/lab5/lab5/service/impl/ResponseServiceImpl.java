@@ -53,4 +53,11 @@ public class ResponseServiceImpl implements ResponseService {
                 .orElseThrow(() -> new ResponseNotFoundException(id));
         responseRepository.delete(response);
     }
+
+    @Override
+    @Transactional
+    public void insertResponses(String text_response){
+        responseRepository.insertResponses(text_response);
+    }
+
 }

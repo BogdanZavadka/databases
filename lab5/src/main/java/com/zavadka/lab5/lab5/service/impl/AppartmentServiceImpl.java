@@ -68,4 +68,9 @@ public class AppartmentServiceImpl implements AppartmentService {
                 .orElseThrow(() -> new RenterNotFoundException(renterId));
         return renter.getAppartments().stream().toList();
     }
+
+    @Override
+    public Float getAvarageAppartmentPrice(){
+        return appartmentRepository.getAvarageAppartmentPrice();
+    }
 }

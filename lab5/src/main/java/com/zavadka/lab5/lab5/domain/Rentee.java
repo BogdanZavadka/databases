@@ -29,6 +29,23 @@ public class Rentee {
     @Column(name = "birthday")
     private String birthday;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Rentee rentee = (Rentee) o;
+        return Objects.equals(id, rentee.id) && Objects.equals(name, rentee.name) && Objects.equals(surname, rentee.surname) && Objects.equals(phoneNumber, rentee.phoneNumber) && Objects.equals(email, rentee.email) && Objects.equals(gender, rentee.gender) && Objects.equals(birthday, rentee.birthday) && Objects.equals(rentee_balance_id, rentee.rentee_balance_id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, surname, phoneNumber, email, gender, birthday, rentee_balance_id);
+    }
+
+    @Basic
+    @Column(name = "rentee_balance_id")
+    private Integer rentee_balance_id;
+
     public Integer getId() {
         return id;
     }
@@ -85,16 +102,13 @@ public class Rentee {
         this.birthday = birthday;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Rentee that = (Rentee) o;
-        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(surname, that.surname) && Objects.equals(phoneNumber, that.phoneNumber) && Objects.equals(email, that.email) && Objects.equals(gender, that.gender) && Objects.equals(birthday, that.birthday);
+
+    public Integer getRentee_balance_id() {
+        return rentee_balance_id;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, surname, phoneNumber, email, gender, birthday);
+    public void setRentee_balance_id(Integer rentee_balance_id) {
+        this.rentee_balance_id = rentee_balance_id;
     }
+
 }

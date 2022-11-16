@@ -20,8 +20,6 @@ public class Response {
     @Basic
     @Column(name = "rating")
     private Integer rating;
-    @ManyToMany(mappedBy = "responses")
-    private Set<Appartment> appartments;
 
     public Integer getId() {
         return id;
@@ -68,11 +66,4 @@ public class Response {
         return Objects.hash(id, photoHref, textResponse, rating);
     }
 
-    public Set<Appartment> getAppartments() {
-        return appartments;
-    }
-
-    public void setAppartments(Set<Appartment> appartments) {
-        this.appartments = appartments;
-    }
 }

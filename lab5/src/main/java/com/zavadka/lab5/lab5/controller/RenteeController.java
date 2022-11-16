@@ -52,4 +52,17 @@ public class RenteeController {
         renteeService.delete(renteeId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @PostMapping(value = "/post_with_procedure")
+    public ResponseEntity<RenteeDto> addRenteeWithProcedure(@RequestBody Rentee rentee) {
+        Rentee rentee1 = renteeService.createWithProcedure(rentee);
+        RenteeDto renteeDto = renteeDtoAssembler.toModel(rentee1);
+        return new ResponseEntity<>(renteeDto, HttpStatus.CREATED);
+    }
+
+    @PostMapping(value = "/create_tables")
+    public ResponseEntity<?> createTables() {
+        renteeService.createTables();
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
 }

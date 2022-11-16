@@ -22,6 +22,7 @@ public class RenteeDtoAssembler implements RepresentationModelAssembler<Rentee, 
                 .email(entity.getEmail())
                 .gender(entity.getGender())
                 .birthday(entity.getBirthday())
+                .rentee_balance_id(entity.getRentee_balance_id())
                 .build();
         Link selfLink = linkTo(methodOn(RenteeController.class).getRentee(renteeDto.getId())).withSelfRel();
         renteeDto.add(selfLink);

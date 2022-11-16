@@ -37,6 +37,13 @@ public class RenteeServiceImpl implements RenteeService {
 
     @Override
     @Transactional
+    public Rentee createWithProcedure(Rentee rentee){
+        return renteeRepository.insertIntoRentee(rentee.getName(), rentee.getSurname(), rentee.getPhoneNumber(), rentee.getEmail(),
+                rentee.getGender(), rentee.getBirthday(), rentee.getRentee_balance_id());
+    }
+
+    @Override
+    @Transactional
     public void update(Integer id, Rentee uRentee) {
         Rentee rentee = renteeRepository.findById(id)
                 .orElseThrow(() -> new RenteeNotFoundException(id));
@@ -46,6 +53,7 @@ public class RenteeServiceImpl implements RenteeService {
         rentee.setEmail(uRentee.getEmail());
         rentee.setGender(uRentee.getGender());
         rentee.setBirthday(uRentee.getBirthday());
+        rentee.setRentee_balance_id(uRentee.getRentee_balance_id());
         renteeRepository.save(rentee);
     }
 
@@ -55,5 +63,10 @@ public class RenteeServiceImpl implements RenteeService {
         Rentee rentee = renteeRepository.findById(id)
                 .orElseThrow(() -> new RenteeNotFoundException(id));
         renteeRepository.delete(rentee);
+    }
+
+    @Override
+    public void createTables() {
+        renteeRepository.createTables();
     }
 }

@@ -64,4 +64,9 @@ public class AppartmentController {
         CollectionModel<AppartmentDto> appartmentDtos = appartmentDtoAssembler.toCollectionModel(appartments, selfLink);
         return new ResponseEntity<>(appartmentDtos, HttpStatus.OK);
     }
+
+    @GetMapping(value = "/avarage_price")
+    public Float countAvarageAppartmentPrice(){
+        return appartmentService.getAvarageAppartmentPrice();
+    }
 }

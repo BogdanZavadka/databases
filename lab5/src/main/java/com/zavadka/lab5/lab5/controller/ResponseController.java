@@ -52,4 +52,10 @@ public class ResponseController {
         responseService.delete(responseId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @PostMapping(value = "/insert_10_responses/{responseText}")
+    public ResponseEntity<?> insertTenResponses(@PathVariable String responseText){
+        responseService.insertResponses(responseText);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
 }

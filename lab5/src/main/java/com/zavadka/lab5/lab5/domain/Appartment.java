@@ -32,11 +32,7 @@ public class Appartment {
     private Renter renter;
     @OneToMany(mappedBy = "appartment")
     private List<AppartmentAdress> appartmentAdresses;
-    @ManyToMany
-    @JoinTable(name = "appartment_response", catalog = "", schema = "air_bnb",
-            joinColumns = @JoinColumn(name = "appartment_id", referencedColumnName = "id", nullable = false),
-            inverseJoinColumns = @JoinColumn(name = "response_id", referencedColumnName = "id", nullable = false))
-    private Set<Response> responses;
+
 
     public Integer getId() {
         return id;
@@ -107,11 +103,4 @@ public class Appartment {
         this.appartmentAdresses = appartmentAdresses;
     }
 
-    public Set<Response> getResponses() {
-        return responses;
-    }
-
-    public void setResponses(Set<Response> responses) {
-        this.responses = responses;
-    }
 }

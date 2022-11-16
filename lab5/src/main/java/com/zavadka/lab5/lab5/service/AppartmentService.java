@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface AppartmentService extends GeneralService<Appartment, Integer> {
     List<Appartment> findAppartmentsByRenterId(Integer renterId);
+
+    Float getAvarageAppartmentPrice();
 }
